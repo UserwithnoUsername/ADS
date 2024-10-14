@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.13.0)
 project(ads)
 
 find_package(Threads)
-
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
@@ -20,7 +20,7 @@ elseif(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
 endif()
 
 add_definitions(-DCONFIG_DEFAULT_LOGLEVEL=1)
-option(BUILD_SHARED_LIBS "Build using shared libraries" ON)
+#option(BUILD_SHARED_LIBS "Build using shared libraries" ON)
 
 add_subdirectory(AdsLib)
 add_subdirectory(AdsTool)

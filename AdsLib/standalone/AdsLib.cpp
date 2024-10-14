@@ -5,6 +5,7 @@
 
 #include "AdsLib.h"
 #include "AmsRouter.h"
+#include <iostream>
 
 static AmsRouter& GetRouter()
 {
@@ -32,10 +33,16 @@ namespace ads
 long AddLocalRoute(const AmsNetId ams, const char* ip)
 {
     try {
+        std::cout<<"Hello from your router";
+        std::cout<<ip;
+        std::cout<<ams;
+        std::cout<<"\n";
         return GetRouter().AddRoute(ams, ip);
     } catch (const std::bad_alloc&) {
+        std::cout<<"alloc";
         return GLOBALERR_NO_MEMORY;
     } catch (const std::runtime_error&) {
+        std::cout<<"port";
         return GLOBALERR_TARGET_PORT;
     }
 }

@@ -136,7 +136,11 @@ Socket::Socket(const struct addrinfo* const host, const int type)
         memcpy(&m_SockAddress, rp->ai_addr, std::min<size_t>(sizeof(m_SockAddress), rp->ai_addrlen));
         return;
     }
+
+    LOG_ERROR("SOCKETSTUFF SOCKETS.cpp");
     LOG_ERROR("Unable to create socket");
+    LOG_ERROR(WSAGetLastError());
+
     throw std::system_error(WSAGetLastError(), std::system_category());
 }
 
